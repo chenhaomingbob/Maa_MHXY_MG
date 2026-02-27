@@ -338,7 +338,20 @@
             "LoopNode": "钟馗-捉鬼任务-循环"
         }
     },
+    "抓鬼轮次计算-max": {
+        "max_hit": 2,
+        "next": [
+            "钟馗-捉鬼任务-循环"
+        ]
+    },
+    "抓鬼轮次计算-max-结束": {
+        "max_hit": 1,
+        "next": [
+            "panduan_zhujiemian"
+        ]
+    },
     "捉鬼-队伍人员满员判断": {
+        "pre_delay": 1000,
         "action": "ClickKey",
         "post_delay": 2000,
         "key": [
@@ -472,7 +485,7 @@
             66,
             59
         ],
-        "pre_delay": 200,
+        "pre_delay": 1000,
         "action": "Click",
         "post_delay": 1500,
         "next": [
