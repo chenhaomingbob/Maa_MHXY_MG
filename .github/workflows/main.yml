@@ -1,0 +1,33 @@
+name: Sync with Upstream
+
+on:
+  schedule:
+    # 每天 UTC 0:00 运行（北京时间 8:00）
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.WORKFLOW }}  # 使用你有权限的 PAT
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/gitlihang/Maa_MHXY_MG.git
+          git fetch upstream
+
+      - name: Merge upstream changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git merge upstream/main --allow-unrelated-histories
+          git push origin main
+
+      - name: Cleanup (optional)
+        run: |
+          git remote remove upstream
