@@ -360,8 +360,26 @@
         ],
         "next": [
             "捉鬼-进入组队界面成功",
+            "[JumpBack]捉鬼-取消钟馗接取任务列表",
             "[JumpBack]队伍界面-按键打开失败-点击队伍图标"
         ]
+    },
+    "捉鬼-取消钟馗接取任务列表": {
+        "recognition": "OCR",
+        "expected": [
+            "钟馗",
+            "钟道",
+            "钟",
+            "道",
+            "馗"
+        ],
+        "replace": [
+            "道",
+            "馗"
+        ],
+        "pre_delay": 1000,
+        "action": "Click",
+        "post_delay": 1000
     },
     "捉鬼-进入组队界面成功": {
         "recognition": "TemplateMatch",
@@ -489,7 +507,48 @@
         "action": "Click",
         "post_delay": 1500,
         "next": [
-            "钟馗-捉鬼任务-循环"
+            "钟馗-捉鬼任务-循环",
+            "[JumpBack]抓鬼-关闭组队后打开小地图"
+        ]
+    },
+    "抓鬼-关闭组队后打开小地图": {
+        "pre_delay": 500,
+        "action": "ClickKey",
+        "key": [
+            61
+        ],
+        "post_delay": 1000,
+        "next": [
+            "抓鬼-关闭组队后打开小地图点击钟馗",
+            "[JumpBack]小地图-按键打开失败-点击小地图图标"
+        ]
+    },
+    "抓鬼-关闭组队后打开小地图点击钟馗": {
+        "recognition": "OCR",
+        "expected": [
+            "钟馗",
+            "钟道",
+            "钟",
+            "道",
+            "馗"
+        ],
+        "replace": [
+            "道",
+            "馗"
+        ],
+        "roi": [
+            357,
+            391,
+            72,
+            43
+        ],
+        "action": "Click",
+        "post_delay": 3000,
+        "target_offset": [
+            0,
+            0,
+            -4,
+            -8
         ]
     }
 }

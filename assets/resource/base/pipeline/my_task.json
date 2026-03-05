@@ -193,6 +193,20 @@
         ],
         "pre_delay": 20000
     },
+    "战斗中-等待10秒": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "zhandou/zidong.png",
+            "zhandou/quxiao.png"
+        ],
+        "roi": [
+            1175,
+            549,
+            103,
+            159
+        ],
+        "pre_delay": 10000
+    },
     "战斗中-等待5秒": {
         "recognition": "TemplateMatch",
         "template": [
@@ -287,5 +301,18 @@
     "启动梦幻西游手游": {
         "action": "StartApp",
         "package": "com.netease.myq"
+    },
+    "测试focus1": {
+        "recognition": "OCR",
+        "expected": [],
+        "roi": [
+            289,
+            63,
+            167,
+            61
+        ],
+        "focus": {
+            "Node.Recognition.Succeeded": "测试focus1{best_result}"
+        }
     }
 }
