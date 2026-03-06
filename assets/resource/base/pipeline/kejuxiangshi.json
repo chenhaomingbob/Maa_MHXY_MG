@@ -227,6 +227,7 @@
         "custom_recognition": "AIAnswer"
     },
     "活动-科举乡试-开始答题agent-智谱": {
+        "max_hit": 11,
         "recognition": "Custom",
         "custom_recognition": "zhipu",
         "attach": {

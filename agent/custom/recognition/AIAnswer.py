@@ -236,6 +236,38 @@ class zhipu(CustomRecognition):
      ) -> CustomRecognition.AnalyzeResult:
         logger.info("进入zhipu")
 
+        def sort_ocr_results_by_position(ocr_results):
+            # 定义行高阈值，如果两个框的y坐标差距小于这个值，认为它们在同一行
+            row_height_threshold = 20
+            
+            # 按y坐标分组（将接近的y坐标视为同一行）
+            rows = {}
+            for result in ocr_results:
+                y = result.box[1]  # y坐标
+                assigned = False
+                
+                # 检查是否可以分配到现有行
+                for row_y in rows.keys():
+                    if abs(y - row_y) < row_height_threshold:
+                        rows[row_y].append(result)
+                        assigned = True
+                        break
+                
+                # 如果不能分配到现有行，创建新行
+                if not assigned:
+                    rows[y] = [result]
+            
+            # 对每一行内的元素按x坐标排序
+            for row_y in rows:
+                rows[row_y].sort(key=lambda r: r.box[0])
+            
+            # 按y坐标对行进行排序，并将所有结果合并到一个列表中
+            sorted_results = []
+            for row_y in sorted(rows.keys()):
+                sorted_results.extend(rows[row_y])
+            
+            return sorted_results
+        
         # 获取界面图片
         image1 = context.tasker.controller.post_screencap().wait().get()
         reco_detail = context.run_recognition(
@@ -255,7 +287,7 @@ class zhipu(CustomRecognition):
             return CustomRecognition.AnalyzeResult(box=(0,0,0,0),detail="答题结束")
         all_results= reco_detail.all_results
         #按照box进行排序
-        sorted_results= AIAnswer.sort_ocr_results_by_position(all_results)
+        sorted_results= sort_ocr_results_by_position(all_results)
         #整合科举乡试题目
         question=''
         for item in sorted_results:
@@ -335,6 +367,8 @@ class zhipu(CustomRecognition):
         # logger.info(f"答案为：{answer}")
         # 获取传参节点apikey数据
         uipikey: dict = context.get_node_data("活动-科举乡试-开始答题agent-智谱")["attach"]["apikey"]
+        # logger.info(f"uipikey:{uipikey}")
+        # 调用智谱ai
         def get_answer_from_zhipu(question, options):
             """
             发送问题给智谱AI并获取答案
@@ -360,6 +394,7 @@ class zhipu(CustomRecognition):
                 print(f"API调用出错: {e}")
                 return None
 
+        # 对结果进行分析并格式化
         def solve_riddle(question, answers):
             # 1. 过滤为空的答案
             valid_answers = {k: v for k, v in answers.items() if v and v.strip()}
@@ -400,8 +435,6 @@ class zhipu(CustomRecognition):
                 # print(f"最终答案：{final_choice}")
                 return final_choice
             else:
-                # 如果回复不在ABCD中，留下注释
-                # print(f"# 注释：AI的回复 '{ai_response}' 不在有效选项 {list(valid_keys)} 中，无法确定答案。")
                 return f"# 注释：AI的回复 '{ai_response}' 不在有效选项 {list(valid_keys)} 中，无法确定答案。"
         listAnswer= solve_riddle(question,answer)
         def clickBox(box):
