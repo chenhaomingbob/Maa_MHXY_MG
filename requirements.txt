@@ -9,3 +9,4 @@ python-Levenshtein
 RapidFuzz
 StrEnum
 requests
+zai-sdk

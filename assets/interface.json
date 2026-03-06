@@ -438,10 +438,10 @@
             ]
         },
         "是否使用Ai进行答题": {
-            "type": "switch",
+            "type": "select",
             "cases": [
                 {
-                    "name": "No",
+                    "name": "不适用AI",
                     "pipeline_override": {
                         "活动-科举乡试-进入答题界面": {
                             "next": [
@@ -452,7 +452,7 @@
                     }
                 },
                 {
-                    "name": "Yes",
+                    "name": "使用deepseek",
                     "pipeline_override": {
                         "活动-科举乡试-进入答题界面": {
                             "next": [
@@ -463,6 +463,20 @@
                     },
                     "option": [
                         "Deepseek_apikey"
+                    ]
+                },
+                {
+                    "name": "使用智谱",
+                    "pipeline_override": {
+                        "活动-科举乡试-进入答题界面": {
+                            "next": [
+                                "活动-科举乡试-结束-图片",
+                                "[JumpBack]活动-科举乡试-开始答题agent-智谱"
+                            ]
+                        }
+                    },
+                    "option": [
+                        "zhipu_apikey"
                     ]
                 }
             ]
@@ -518,19 +532,19 @@
                 }
             }
         },
-        "Deepseek_apikey2": {
+        "zhipu_apikey": {
             "type": "input",
             "inputs": [
                 {
-                    "name": "Deepseek_apikey",
+                    "name": "zhipu_apikey",
                     "pipeline_type": "string",
                     "default": ""
                 }
             ],
             "pipeline_override": {
-                "活动-科举乡试-开始答题agent2": {
+                "活动-科举乡试-开始答题agent-智谱": {
                     "attach": {
-                        "apikey": "{Deepseek_apikey}"
+                        "apikey": "{zhipu_apikey}"
                     }
                 }
             }

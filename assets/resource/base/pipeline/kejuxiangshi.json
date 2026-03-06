@@ -226,9 +226,9 @@
         "recognition": "Custom",
         "custom_recognition": "AIAnswer"
     },
-    "活动-科举乡试-开始答题agent2": {
+    "活动-科举乡试-开始答题agent-智谱": {
         "recognition": "Custom",
-        "custom_recognition": "AIAnswer",
+        "custom_recognition": "zhipu",
         "attach": {
             "apikey": ""
         }

@@ -16,9 +16,15 @@ body = """
 {% macro print_commit(commit) -%}
     - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
         {% if commit.breaking %}[**breaking**] {% endif %}\
-        {{ commit.message | upper_first }} \
-        @{{ author.login | default(value=commit.author.name) }}\
-        {% if commit.co_authors %}{% for co_author in commit.co_authors %} @{{ co_author.name }}{% endfor %}{% endif %}
+        {{ commit.message | split(pat="\n") | first | upper_first }} \
+        {% if commit.github.username %} @{{ commit.github.username }}{% else %} {{ commit.author.name }}{% endif %}
+        {%- if commit.footers -%}
+            {%- for footer in commit.footers -%}
+                {%- if footer.token == "Co-authored-by" -%}
+                    {%- set co_author_name = footer.value | split(pat=" <") | first | trim %} @{{ co_author_name }}
+                {%- endif -%}
+            {%- endfor -%}
+        {%- endif %}
 {% endmacro -%}
 
 {% if version %}\
