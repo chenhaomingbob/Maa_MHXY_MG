@@ -186,8 +186,21 @@
         "post_delay": 3000,
         "next": [
             "召唤灵室-使用家具",
-            "召唤灵室-未开启"
+            "召唤灵室-未开启",
+            "[JumpBack]点击管家失败-再次点击"
         ]
+    },
+    "点击管家失败-再次点击": {
+        "recognition": "TemplateMatch",
+        "template": "jiayuan/xunlu.png",
+        "roi": [
+            700,
+            202,
+            40,
+            53
+        ],
+        "pre_delay": 1000,
+        "action": "Click"
     },
     "召唤灵室-未开启": {
         "recognition": "TemplateMatch",
@@ -279,7 +292,7 @@
             183,
             96
         ],
-        "pre_delay": 2000
+        "pre_delay": 1500
     },
     "卧室-点击打理-过渡": {
         "pre_delay": 2000,
@@ -297,8 +310,8 @@
             93,
             80
         ],
-        "action": "Click",
         "pre_delay": 500,
+        "action": "Click",
         "next": [
             "卧室-点击佣人"
         ]
@@ -314,7 +327,7 @@
         ],
         "pre_delay": 1000,
         "action": "Click",
-        "post_delay": 500,
+        "post_delay": 1000,
         "next": [
             "卧室-点击管家"
         ]
@@ -328,11 +341,13 @@
             40,
             53
         ],
+        "pre_delay": 1000,
         "action": "Click",
         "post_delay": 3000,
         "next": [
             "点击卧室家具",
-            "卧室家具-未开启"
+            "卧室家具-未开启",
+            "[JumpBack]点击管家失败-再次点击"
         ]
     },
     "卧室家具-未开启": {

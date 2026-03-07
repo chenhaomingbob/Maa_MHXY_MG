@@ -240,7 +240,9 @@
             "[JumpBack]战斗中-等待10秒",
             "[JumpBack]点击副本-开始战斗",
             "[JumpBack]跳过剧情动画-快进键",
-            "[JumpBack]推荐好友信息"
+            "[JumpBack]推荐好友信息",
+            "[JumpBack]关闭福利弹窗",
+            "[JumpBack]关闭师门弹窗"
         ]
     },
     "测试-进入50级侠士副本": {
@@ -250,7 +252,9 @@
             "[JumpBack]战斗中-等待10秒",
             "[JumpBack]点击副本-开始战斗",
             "[JumpBack]跳过剧情动画-快进键",
-            "[JumpBack]推荐好友信息"
+            "[JumpBack]推荐好友信息",
+            "[JumpBack]关闭福利弹窗",
+            "[JumpBack]关闭师门弹窗"
         ]
     },
     "50侠士-副本完成-退出": {
@@ -365,6 +369,36 @@
         ],
         "post_delay": 1000
     },
+    "关闭福利弹窗": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "zonghe/guanbi7.png"
+        ],
+        "roi": [
+            1093,
+            9,
+            113,
+            105
+        ],
+        "pre_delay": 500,
+        "action": "Click",
+        "post_delay": 500
+    },
+    "关闭师门弹窗": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "zonghe/shimen_GB.png"
+        ],
+        "roi": [
+            1097,
+            121,
+            30,
+            53
+        ],
+        "pre_delay": 500,
+        "action": "Click",
+        "post_delay": 500
+    },
     "打开小地图_百晓仙子-50普通-1": {
         "recognition": "OCR",
         "expected": [
@@ -449,7 +483,9 @@
             "[JumpBack]战斗中-等待10秒",
             "[JumpBack]点击副本-开始战斗",
             "[JumpBack]跳过剧情动画-快进键",
-            "[JumpBack]推荐好友信息"
+            "[JumpBack]推荐好友信息",
+            "[JumpBack]关闭福利弹窗",
+            "[JumpBack]关闭师门弹窗"
         ]
     },
     "50普通-1-副本完成-退出": {
@@ -555,7 +591,9 @@
             "[JumpBack]战斗中-等待10秒",
             "[JumpBack]点击副本-开始战斗",
             "[JumpBack]跳过剧情动画-快进键",
-            "[JumpBack]推荐好友信息"
+            "[JumpBack]推荐好友信息",
+            "[JumpBack]关闭福利弹窗",
+            "[JumpBack]关闭师门弹窗"
         ]
     },
     "测试-进入50级普通副本-2": {
@@ -565,7 +603,9 @@
             "[JumpBack]战斗中-等待10秒",
             "[JumpBack]点击副本-开始战斗",
             "[JumpBack]跳过剧情动画-快进键",
-            "[JumpBack]推荐好友信息"
+            "[JumpBack]推荐好友信息",
+            "[JumpBack]关闭福利弹窗",
+            "[JumpBack]关闭师门弹窗"
         ]
     },
     "50普通-2-副本完成-退出": {

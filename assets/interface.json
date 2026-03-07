@@ -553,11 +553,11 @@
             "type": "switch",
             "cases": [
                 {
-                    "name": "否",
+                    "name": "No",
                     "pipeline_override": {}
                 },
                 {
-                    "name": "是",
+                    "name": "Yes",
                     "pipeline_override": {
                         "进入选择召唤零界面": {
                             "next": [

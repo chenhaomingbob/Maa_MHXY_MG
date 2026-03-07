@@ -133,4 +133,4 @@ Please input [1-7]:
     7. 退出
 
 # 演示示例
-![alt text](image-2.png)
+![alt text](img/image-2.png)
