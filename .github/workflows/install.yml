@@ -75,7 +75,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        arch: [x86_64]
+        arch: [aarch64, x86_64]
       fail-fast: false
 
     steps:
@@ -99,7 +99,7 @@ jobs:
         uses: robinraju/release-downloader@v1
         with:
           repository: SweetSmellFox/MFAAvalonia
-          fileName: "MFAAvalonia-*-win-x64*"
+          fileName: "MFAAvalonia-*-win-${{ matrix.arch == 'x86_64' && 'x64' || 'arm64' }}*"
           # latest: true
           tag: ${{env.MFAA_VERSION}}
           out-file-path: "MFA"

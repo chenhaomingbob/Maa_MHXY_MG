@@ -5,6 +5,7 @@ from maa.custom_recognition  import CustomRecognition
 from maa.context import Context
 from typing import Dict, List, Tuple
 from utils import logger
+from utils import SendJinSan
 import time
 import re
 
@@ -154,7 +155,7 @@ class sjqy_tiku_V3(CustomRecognition):
          context: Context,
          argv: CustomRecognition.AnalyzeArg,
      ) -> CustomRecognition.AnalyzeResult:
-        logger.info("进入三界奇缘答题agent_V3")
+        # logger.info("进入三界奇缘答题agent_V3")
 
             # 根据位置排序OCR结果
         def sort_ocr_results_by_position(ocr_results):
@@ -191,8 +192,11 @@ class sjqy_tiku_V3(CustomRecognition):
 
         # 未找到答案次数
         NotAnswerCount = 0
-
-        # logger.info(f"第{i}次识别三界奇缘题目")
+        # 当第一次进入答题时，需要暂停一秒后在开始截图。
+        max_hit = context.get_hit_count("活动-三界奇缘-开始答题_agent")
+        if max_hit == 0:
+            time.sleep(1.5)
+        
         #识别三界奇缘题目
         image1 = context.tasker.controller.post_screencap().wait().get()
         reco_detail = context.run_recognition(
@@ -228,12 +232,19 @@ class sjqy_tiku_V3(CustomRecognition):
         # 获取答案list[]
         results_value, confidence ,match_type = SearchQuestions(text)
         # 如果可信度为零，点击第一个答案
-        if confidence == 0:
+        if confidence < 100:
             # logger.info(f"题库中未找到答案，问题为:{text}.请反馈开发者填充题库")
             # 预留接口，未在题库中找得到问题，可以把截图发送到服务器。
             # context.tasker.controller.post_screencap().wait().save("{text}.png")
-            
-            NotAnswerCount = NotAnswerCount + 1
+            # 获取时间并格式化
+            formatted = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            # 发送到金山文档
+            data_to_send = [text,confidence,results_value,formatted]
+            # logger.info(f"发送到金山文档的数据为:{data_to_send}")   
+            if SendJinSan.send(data_to_send):
+                logger.info(f"本问题与题库非100%匹配:{text},已经登记在线文档")
+            else:
+                logger.error(f"登记在线文档失败:{text}")
             time.sleep(2)
             context.tasker.controller.post_click(500, 344).wait()
             time.sleep(3)
@@ -260,6 +271,7 @@ class sjqy_tiku_V3(CustomRecognition):
             time.sleep(2)
             click_job = context.tasker.controller.post_click(center_x, center_y)
             click_job.wait()  # 等待点击操作完成
+            logger.info(f"已在题库中找到答案")
             time.sleep(2)
         else:#没找到答案，点击的一个
             time.sleep(2)
