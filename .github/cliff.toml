@@ -74,7 +74,7 @@ footer = """
 {%- endfor -%}
 
 {% if latest_version -%}
-**绝大部分用户请下载  [Maa_MHXY_MG-win-x86_64-{{ latest_version }}-MFAA.zip]({{ self::remote_url() }}/releases/download/{{ latest_version }}/M9A-win-x86_64-{{ latest_version }}.zip)**
+**绝大部分用户请下载  [Maa_MHXY_MG-win-x86_64-{{ latest_version }}.zip]({{ self::remote_url() }}/releases/download/{{ latest_version }}/M9A-win-x86_64-{{ latest_version }}.zip)**
 {%- else -%}
 **绝大部分用户请下载  Maa_MHXY_MG-win-x86_64-vx.x.x.zip，没找到的请点 show all x assets**
 {%- endif %}
