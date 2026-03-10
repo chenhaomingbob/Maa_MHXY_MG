@@ -195,7 +195,9 @@
         "action": "Click",
         "next": [
             "[JumpBack]藏宝图-主界面使用",
-            "[JumpBack]战斗中-等待100秒"
+            "[JumpBack]战斗中-等待100秒",
+            "[JumpBack]关闭三界热点",
+            "[JumpBack]战斗平衡弹窗-点击关闭"
         ],
         "on_error": [
             "挖宝图完成判断"
