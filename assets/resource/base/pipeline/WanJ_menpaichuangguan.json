@@ -246,7 +246,7 @@
     "门派-点击任务栏任务": {
         "recognition": "OCR",
         "expected": [
-            "门派闯关*.*"
+            "门派闯关[(（]\\d+.\\d+[)）]"
         ],
         "roi": [
             1040,
@@ -258,8 +258,24 @@
         "action": "Click",
         "post_delay": 2000,
         "next": [
-            "门派-点击进入战斗"
+            "门派-点击进入战斗",
+            "战斗中-等待5秒",
+            "[JumpBack]门派-再次点击任务栏任务"
         ]
+    },
+    "门派-再次点击任务栏任务": {
+        "recognition": "OCR",
+        "expected": [
+            "门派闯关[(（]\\d+.\\d+[)）]"
+        ],
+        "roi": [
+            1040,
+            175,
+            238,
+            325
+        ],
+        "pre_delay": 1000,
+        "action": "Click"
     },
     "门派-点击进入战斗": {
         "recognition": "OCR",
@@ -272,7 +288,7 @@
             338,
             155
         ],
-        "pre_delay": 500,
+        "pre_delay": 1000,
         "action": "Click",
         "post_delay": 500
     },
@@ -321,6 +337,7 @@
             303,
             240
         ],
+        "pre_delay": 1000,
         "action": "Click",
         "post_delay": 1000
     },

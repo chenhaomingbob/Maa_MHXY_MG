@@ -154,7 +154,7 @@
             "option": [
                 "是否使用Ai进行答题"
             ],
-            "description": "1.默认不使用AI，全选A,2.科举乡试使用AI答题，请在高级中填写Key,暂时只支持deepseek。"
+            "description": "1.默认不使用AI，全选A,2.科举乡试使用AI答题，请在填写Key,支持deepseek及智谱。"
         },
         {
             "name": "活跃领取",
@@ -348,6 +348,7 @@
         },
         "是否选择题库": {
             "type": "switch",
+            "default_case": "Yes",
             "cases": [
                 {
                     "name": "No",
