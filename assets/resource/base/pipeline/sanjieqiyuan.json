@@ -240,7 +240,7 @@
         "post_wait_freezes": 500
     },
     "活动-三界奇缘-开始答题_agent": {
-        "max_hit": 30,
+        "max_hit": 100,
         "recognition": "Custom",
         "custom_recognition": "sjqy_tiku_V3"
     }

@@ -215,7 +215,7 @@
         ]
     },
     "AIapikey": {
-        "max_hit": 11,
+        "max_hit": 50,
         "recognition": "Custom",
         "custom_recognition": "AIAnswer",
         "custom_recognition_param": {
@@ -227,7 +227,7 @@
         "custom_recognition": "AIAnswer"
     },
     "活动-科举乡试-开始答题agent-智谱": {
-        "max_hit": 11,
+        "max_hit": 100,
         "recognition": "Custom",
         "custom_recognition": "zhipu",
         "attach": {

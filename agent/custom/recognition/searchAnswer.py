@@ -24,8 +24,8 @@ def load_question_bank(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             content = file.read()
             
-        # 使用正则表达式匹配问题和答案
-        pattern = r'"([^"]+)":\[([^\]]+)\]'
+        # 使用正则表达式匹配问题和答案（兼容冒号与方括号间可能的空格）
+        pattern = r'"\s*([^"]+)\s*"\s*:\s*\[\s*([^\]]*?)\s*\]'
         matches = re.findall(pattern, content)
         
         question_bank = {}
@@ -98,7 +98,7 @@ def format_answer(answers):
     return f"[{','.join(formatted_answers)}]"
 
 # def main():
-#     file_path = "三界奇缘题库.txt"
+#     # file_path = "tiku.txt"
 #     question_bank = load_question_bank(file_path)
     
 #     if not question_bank:
