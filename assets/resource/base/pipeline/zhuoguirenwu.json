@@ -177,26 +177,49 @@
         "post_delay": 500
     },
     "任务栏切换为任务": {
-        "recognition": "ColorMatch",
-        "upper": [
-            177,
-            175,
-            145
+        "recognition": "And",
+        "all_of": [
+            {
+                "recognition": "TemplateMatch",
+                "template": [
+                    "shimen/shimen_renwulan_zhankaizhong.png"
+                ],
+                "roi": [
+                    1038,
+                    110,
+                    57,
+                    58
+                ]
+            },
+            {
+                "recognition": "ColorMatch",
+                "upper": [
+                    177,
+                    175,
+                    145
+                ],
+                "lower": [
+                    28,
+                    31,
+                    22
+                ],
+                "roi": [
+                    1047,
+                    119,
+                    35,
+                    35
+                ],
+                "count": 950
+            }
         ],
-        "lower": [
-            28,
-            31,
-            22
-        ],
-        "roi": [
-            1047,
-            119,
-            35,
-            35
-        ],
-        "count": 950,
         "pre_delay": 1500,
         "action": "Click",
+        "target": [
+            1044,
+            115,
+            101,
+            50
+        ],
         "post_delay": 1500
     },
     "捉鬼-下滑任务栏": {
@@ -266,7 +289,7 @@
     "点击任务栏-捉鬼任务": {
         "recognition": "OCR",
         "expected": [
-            "^捉鬼[（(]\\d+/\\d+[）)]$",
+            "^捉鬼[（(]\\d*/\\d*[）)]$",
             "千年厉鬼"
         ],
         "roi": [

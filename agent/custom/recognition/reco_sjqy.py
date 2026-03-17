@@ -204,7 +204,16 @@ class sjqy_tiku_V3(CustomRecognition):
             image1,
             pipeline_override={"三界奇缘题目": {"roi" : [447,40,673,94],
                                                 "expected":[""],
-                                                "recognition": "OCR"
+                                                "recognition": "OCR",
+                                                "replace":[
+                                                    ["诚","城"],
+                                                    ["摩","魔"],
+                                                    ["味","昧"],
+                                                    ["邮","邺"],
+                                                    ["尺","尸"]
+                                                    
+
+                                                ]
                                                 }
                                 }
             )
