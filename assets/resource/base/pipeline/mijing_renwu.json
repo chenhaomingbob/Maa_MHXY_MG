@@ -75,7 +75,7 @@
             "mijing/ditu_donghaiwan1.png",
             "mijing/ditu_donghaiwan2.png"
         ],
-        "post_delay": 500,
+        "post_delay": 1500,
         "action": "Click"
     },
     "click_tab_mijing": {

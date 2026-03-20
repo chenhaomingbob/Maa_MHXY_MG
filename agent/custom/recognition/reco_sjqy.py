@@ -206,8 +206,6 @@ class sjqy_tiku_V3(CustomRecognition):
                                                 "expected":[""],
                                                 "recognition": "OCR",
                                                 "replace":[
-                                                    ["诚","城"],
-                                                    ["摩","魔"],
                                                     ["味","昧"],
                                                     ["邮","邺"],
                                                     ["尺","尸"]
