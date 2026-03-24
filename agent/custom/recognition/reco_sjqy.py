@@ -238,13 +238,26 @@ class sjqy_tiku_V3(CustomRecognition):
         text = clean_string(ext)
         # 获取答案list[]
         results_value, confidence ,match_type = SearchQuestions(text)
+        # 获取时间并格式化
+        formatted = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
         # 如果可信度为零，点击第一个答案
-        if confidence < 100:
+        if confidence < 80:
             # logger.info(f"题库中未找到答案，问题为:{text}.请反馈开发者填充题库")
             # 预留接口，未在题库中找得到问题，可以把截图发送到服务器。
             # context.tasker.controller.post_screencap().wait().save("{text}.png")
-            # 获取时间并格式化
-            formatted = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+            # 发送到金山文档
+            data_to_send = [text,confidence,results_value,formatted]
+            # logger.info(f"发送到金山文档的数据为:{data_to_send}")   
+            if SendJinSan.send(data_to_send):
+                logger.info(f"本问题未与题库匹配:{text},已经登记在线文档")
+            else:
+                logger.error(f"登记在线文档失败:{text}")
+            time.sleep(2)
+            context.tasker.controller.post_click(500, 344).wait()
+            time.sleep(3)
+            return CustomRecognition.AnalyzeResult(box=(0,0,0,0),detail="题库缺少本问题")
+        elif confidence >=80 and confidence < 100:
+            
             # 发送到金山文档
             data_to_send = [text,confidence,results_value,formatted]
             # logger.info(f"发送到金山文档的数据为:{data_to_send}")   
@@ -252,10 +265,6 @@ class sjqy_tiku_V3(CustomRecognition):
                 logger.info(f"本问题与题库非100%匹配:{text},已经登记在线文档")
             else:
                 logger.error(f"登记在线文档失败:{text}")
-            time.sleep(2)
-            context.tasker.controller.post_click(500, 344).wait()
-            time.sleep(3)
-            return CustomRecognition.AnalyzeResult(box=(0,0,0,0),detail="题库缺少本问题")
         # 识别答案位置
         # new_context = context.clone()
         # image2 = context.tasker.controller.post_screencap().wait().get()
@@ -278,6 +287,8 @@ class sjqy_tiku_V3(CustomRecognition):
             time.sleep(2)
             click_job = context.tasker.controller.post_click(center_x, center_y)
             click_job.wait()  # 等待点击操作完成
+            image2 = context.tasker.controller.post_screencap().wait().get()
+            logger.info(image2)
             logger.info(f"已在题库中找到答案")
             time.sleep(2)
         else:#没找到答案，点击的一个

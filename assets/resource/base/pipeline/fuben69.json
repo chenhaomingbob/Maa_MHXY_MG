@@ -372,17 +372,23 @@
     "关闭福利弹窗": {
         "recognition": "TemplateMatch",
         "template": [
-            "zonghe/guanbi7.png"
+            "qiandao/fuli.png"
         ],
         "roi": [
-            1093,
-            9,
-            113,
-            105
+            414,
+            17,
+            487,
+            103
         ],
         "pre_delay": 500,
         "action": "Click",
-        "post_delay": 500
+        "target": [
+            1140,
+            57,
+            32,
+            35
+        ],
+        "post_delay": 1000
     },
     "关闭师门弹窗": {
         "recognition": "TemplateMatch",
