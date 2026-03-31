@@ -732,6 +732,12 @@
         ],
         "action": "Click",
         "post_delay": 3000,
+        "target_offset": [
+            0,
+            0,
+            -4,
+            -8
+        ],
         "next": [
             "日常抓鬼-钟馗-捉鬼任务"
         ]
@@ -800,6 +806,12 @@
         "pre_delay": 1000,
         "action": "Click",
         "post_delay": 1500,
+        "target_offset": [
+            0,
+            0,
+            -4,
+            -8
+        ],
         "next": [
             "抓鬼不足五人-捉鬼任务"
         ]
