@@ -49,10 +49,26 @@
         ],
         "pre_delay": 500,
         "action": "Click",
+        "post_delay": 1000,
         "next": [
             "师门-点击去完成",
-            "[JumpBack]shimen_renwu2_dianji"
+            "[JumpBack]点击师门任务失败-再次点击"
         ]
+    },
+    "点击师门任务失败-再次点击": {
+        "recognition": "OCR",
+        "expected": [
+            "师门任务"
+        ],
+        "roi": [
+            1035,
+            112,
+            245,
+            294
+        ],
+        "pre_delay": 500,
+        "action": "Click",
+        "post_delay": 1000
     },
     "shimen_renwu2_dianji2": {
         "pre_delay": 500,

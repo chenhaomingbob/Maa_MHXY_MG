@@ -312,9 +312,24 @@
         ],
         "pre_delay": 500,
         "action": "Click",
+        "post_delay": 500,
         "next": [
-            "卧室-点击佣人"
+            "卧室-点击佣人",
+            "[JumpBack]再次点击-卧室-点击打理"
         ]
+    },
+    "再次点击-卧室-点击打理": {
+        "recognition": "TemplateMatch",
+        "template": "jiayuan/dali.png",
+        "roi": [
+            1036,
+            622,
+            93,
+            80
+        ],
+        "pre_delay": 500,
+        "action": "Click",
+        "post_delay": 500
     },
     "卧室-点击佣人": {
         "recognition": "TemplateMatch",

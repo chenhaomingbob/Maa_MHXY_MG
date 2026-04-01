@@ -273,7 +273,6 @@ class zhipu(CustomRecognition):
         reco_detail = context.run_recognition(
                         "科举乡试题目",
                         image1,
-                        
                         pipeline_override={"科举乡试题目": {"roi" : [511,186,602,107],
                                                             "expected":[""],
                                                             "recognition": "OCR"
@@ -375,7 +374,6 @@ class zhipu(CustomRecognition):
             """
             
             # 初始化客户端，请替换为您自己的 API Key
-            # client = ZhipuAiClient(api_key="00c93671cf194f3eb0e9d0634aaf51a7.0qrcTwn2tIl1MHRr")
             client = ZhipuAiClient(api_key=uipikey)
 
             # 构造提示词
