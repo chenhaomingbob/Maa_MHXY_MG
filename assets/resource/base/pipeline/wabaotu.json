@@ -71,7 +71,9 @@
             {
                 "recognition": "OCR",
                 "expected": [
-                    "包裹"
+                    "包裹",
+                    "包",
+                    "裹"
                 ],
                 "roi": [
                     1211,

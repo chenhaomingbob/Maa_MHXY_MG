@@ -298,6 +298,9 @@
             "fuben/fubenzhandou.png",
             "fuben/fubenzhandou2.png"
         ],
+        "threshold": [
+            0.9
+        ],
         "roi": [
             1240,
             225,

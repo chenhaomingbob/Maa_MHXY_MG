@@ -1,10 +1,30 @@
 {
     "baotu_renwu": {
         "next": [
+            "[JumpBack]展开-首页任务栏",
+            "[JumpBack]任务栏切换为任务",
+            "[JumpBack]baotu_huadong_down",
             "已领取宝图任务",
             "主界面-宝图任务",
             "[JumpBack]panduan_zhujiemian"
         ]
+    },
+    "baotu_huadong_down": {
+        "max_hit": 1,
+        "action": "Swipe",
+        "begin": [
+            1145,
+            234,
+            1,
+            1
+        ],
+        "end": [
+            1149,
+            419,
+            1,
+            1
+        ],
+        "post_delay": 1000
     },
     "主界面-宝图任务": {
         "recognition": "TemplateMatch",
@@ -150,8 +170,7 @@
         "action": "Click",
         "post_delay": 4000,
         "next": [
-            "click_baotu_ttwf",
-            "kaishi_datu"
+            "click_baotu_ttwf"
         ]
     },
     "click_baotu_ttwf": {
@@ -165,39 +184,17 @@
             311,
             363
         ],
-        "pre_delay": 2000,
+        "pre_delay": 1000,
         "action": "Click",
+        "post_delay": 1000,
         "next": [
-            "baotu_huadong_down",
-            "[JumpBack]展开-首页任务栏",
-            "[JumpBack]任务栏切换为任务"
-        ]
-    },
-    "baotu_k1": {
-        "next": [
-            "baotu_huadong_down",
-            "[JumpBack]展开-首页任务栏",
-            "[JumpBack]任务栏切换为任务"
-        ]
-    },
-    "baotu_huadong_down": {
-        "max_hit": 3,
-        "action": "Swipe",
-        "begin": [
-            1145,
-            234,
-            1,
-            1
-        ],
-        "end": [
-            1149,
-            419,
-            1,
-            1
-        ],
-        "post_delay": 2000,
-        "next": [
-            "kaishi_datu"
+            "[JumpBack]师门完成-九转天阶遮挡",
+            "[JumpBack]师门完成-九幽遮挡",
+            "[JumpBack]战斗平衡弹窗-点击关闭",
+            "[JumpBack]战斗中-等待5秒",
+            "宝图完成判断",
+            "[JumpBack]宝图-间隔30秒-最大10分钟",
+            "[JumpBack]宝图任务单次点击"
         ]
     },
     "已领取宝图任务": {
@@ -220,10 +217,14 @@
             "[JumpBack]战斗平衡弹窗-点击关闭",
             "[JumpBack]战斗中-等待5秒",
             "宝图完成判断",
-            "[JumpBack]宝图-间隔30秒-最大10分钟"
+            "[JumpBack]宝图-间隔30秒-最大10分钟",
+            "[JumpBack]宝图任务单次点击"
         ]
     },
     "kaishi_datu": {
+        "next": []
+    },
+    "宝图任务单次点击": {
         "recognition": "OCR",
         "expected": [
             "宝图任务"
@@ -234,15 +235,8 @@
             235,
             336
         ],
-        "action": "Click",
-        "next": [
-            "[JumpBack]师门完成-九转天阶遮挡",
-            "[JumpBack]师门完成-九幽遮挡",
-            "[JumpBack]战斗平衡弹窗-点击关闭",
-            "[JumpBack]战斗中-等待5秒",
-            "宝图完成判断",
-            "[JumpBack]宝图-间隔30秒-最大10分钟"
-        ]
+        "pre_delay": 500,
+        "action": "Click"
     },
     "宝图-间隔30秒-最大10分钟": {
         "max_hit": 20,

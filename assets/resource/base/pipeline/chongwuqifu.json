@@ -327,6 +327,23 @@
         ],
         "post_delay": 2500,
         "next": [
+            "宠物祈福完成"
+        ]
+    },
+    "宠物祈福完成": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "qifu/qifuwancheng.png",
+            "qifu/qifuwancheng2.png",
+            "qifu/qifuwancheng3.png"
+        ],
+        "roi": [
+            672,
+            147,
+            132,
+            398
+        ],
+        "next": [
             "panduan_zhujiemian"
         ]
     }

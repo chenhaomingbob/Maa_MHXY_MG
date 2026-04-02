@@ -58,7 +58,8 @@
             {
                 "recognition": "TemplateMatch",
                 "template": [
-                    "qiandao/bangpai.png"
+                    "qiandao/bangpai.png",
+                    "qiandao/bangpai2.png"
                 ],
                 "roi": [
                     815,
